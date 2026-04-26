@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <a class="logo">SportLife</a>
+            <ul class="navbar">
+                <li><a href="#inicio">Ínicio</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#esportes">Esportes</a></li>
+                <li><a href="#historia">Historia</a></li>
+            </ul>
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="inicio">
+        <div class="banner-container">
+            <div class="texto-banner">
+                <h1>Descubra seu próximo passo</h1>
+                <p>Acredita que o esporte pode mudar uma vida?</p>
+
+                <div class="banner-button">
+                <button class="button"><a href="#beneficios">Saiba mais</a></button>
+            </div>
+            </div>
+
+            <div class="carrossel-fita" id="fita-imagens">
+                <div class="slide img1"></div>
+                <div class="slide img2"></div>
+                <div class="slide img3"></div>
+                <div class="slide img4"></div>
+            </div>
+        </div>
+    </section>
+
+     <section id="beneficios">
+
+        <div class="beneficios-container">
+                <div class="texto-beneficios">
+                <h1>Por Que o Eporte Transforma</h1>
+
+                <p>A pratica esportiva mudou completamente minha vida. Aqui eu te mostro como isso mexe com a gente de verdade.</p>
+            </div>
+        </div>
+     </section>
+
+
+<script>
+    let fita = document.getElementById('fita-imagens')
+    let index = 0
+    let totalSlide = 4
+
+    function iniciarCarrossel() {
+        index++
+
+        if (index >= totalSlide) {
+            index = 0
+        }
+
+        let deslocamento = index * 25 /* 25% da fita */ 
+        fita.style.transform = `translateX(-${deslocamento}%)`
+    }
+
+    setInterval(iniciarCarrossel,  4000)
+</script>
+
+</html>
