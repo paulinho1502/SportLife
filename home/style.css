@@ -262,9 +262,13 @@ html {
 }
 
 .card p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #4B5563;
     line-height: 1.5;
+}
+
+.beneficios-container .button {
+    margin-top: 30px;
 }
 
 
