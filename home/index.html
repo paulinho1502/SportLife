@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="header">
         <div class="container">
@@ -29,8 +31,8 @@
                 <p>Acredita que o esporte pode mudar uma vida?</p>
 
                 <div class="banner-button">
-                <button class="button"><a href="#sobre">Saiba mais</a></button>
-            </div>
+                    <button class="button"><a href="#sobre">Saiba mais</a></button>
+                </div>
             </div>
 
             <div class="carrossel-fita" id="fita-imagens">
@@ -49,34 +51,36 @@
 
                 <p>A <Span>SportLife</Span> procura te mostrar o quão importante a prática de atividades físicas é,
                     mostrando os benefícios que um simples esporte pode trazer em sua vida.
-                    Mostrando como o esporte blinda sua mente contra o estresse e trazendo diversos beneficios para sua a saúde.
+                    Mostrando como o esporte blinda sua mente contra o estresse e trazendo diversos beneficios para sua
+                    a saúde.
                 </p>
 
                 <button class="button"><a href="#beneficios">Descubra os Beneficios</a></button>
             </div>
-                
+
         </div>
     </section>
 
-     <section id="beneficios">
+    <section id="beneficios">
 
         <div class="beneficios-container">
-                <div class="texto-beneficios">
+            <div class="texto-beneficios">
                 <h1>Por Que o Eporte Transforma</h1>
 
-                <p>A pratica esportiva mudou completamente minha vida. Aqui eu te mostro como isso mexe com a gente de verdade.</p>
+                <p>A pratica esportiva mudou completamente minha vida. Aqui eu te mostro como isso mexe com a gente de
+                    verdade.</p>
             </div>
 
-            <div  class="cards-container">
+            <div class="cards-container">
                 <div class="card">
                     <div></div>
 
                     <h3>Saude Física</h3>
 
                     <p> O esporte fortalece músculos, melhora o condicionamento,
-                aumenta a disposição no dia a dia e ajuda no controle
-                do peso corporal. Além disso, reduz riscos de doenças
-                cardiovasculares e melhora a qualidade do sono.</p>
+                        aumenta a disposição no dia a dia e ajuda no controle
+                        do peso corporal. Além disso, reduz riscos de doenças
+                        cardiovasculares e melhora a qualidade do sono.</p>
                 </div>
 
                 <div class="card">
@@ -84,9 +88,9 @@
                     <h3>Saude Mental</h3>
 
                     <p>Durante a atividade física, o corpo libera hormônios
-                como endorfina e serotonina, responsáveis pela sensação
-                de bem-estar. Isso ajuda a diminuir ansiedade, estresse
-                e melhora o foco e a autoestima.</p>
+                        como endorfina e serotonina, responsáveis pela sensação
+                        de bem-estar. Isso ajuda a diminuir ansiedade, estresse
+                        e melhora o foco e a autoestima.</p>
                 </div>
 
                 <div class="card">
@@ -94,8 +98,8 @@
                     <h3>Social</h3>
 
                     <p> O esporte aproxima pessoas, cria amizades e fortalece
-                o trabalho em equipe. Seja em grupo ou individualmente,
-                ele ensina respeito, disciplina e convivência saudável.</p>
+                        o trabalho em equipe. Seja em grupo ou individualmente,
+                        ele ensina respeito, disciplina e convivência saudável.</p>
                 </div>
 
                 <div class="card">
@@ -104,35 +108,75 @@
                     <h3>Superação</h3>
 
                     <p>Cada treino é uma oportunidade de evoluir. O esporte
-                desenvolve persistência, determinação e mostra que,
-                com esforço constante, é possível superar limites e
-                alcançar objetivos pessoais.</p>
+                        desenvolve persistência, determinação e mostra que,
+                        com esforço constante, é possível superar limites e
+                        alcançar objetivos pessoais.</p>
                 </div>
 
             </div>
 
-             <button class="button">Conheça seu proximo passo</button>
+            <button class="button"><a href="#esportes">Conheça seu proximo passo</a></button>
         </div>
-     </section>
+    </section>
 
 
-<script>
-    let fita = document.getElementById('fita-imagens')
-    let index = 0
-    let totalSlide = 4
+    <section id="esportes">
+        <h1>Esportes que também possam estar presente em sua vida</h1>
 
-    function iniciarCarrossel() {
-        index++
+        <div class="cards-esportes-container">
 
-        if (index >= totalSlide) {
-            index = 0
+            <div class="card-esporte">
+                <h2>🏀 Basquete</h2>
+
+                <p>Um esporte incrivel, onde trabalha sua velocidade e seu raciocínio</p>
+
+                <ul>
+                    <li>Agilidade</li>
+                    <li>Coordenação</li>
+                    <li>Trabalho em equipe</li>
+                </ul>
+
+                <span>Contribui bastante para a melhora do Foco</span>
+            </div>
+
+            <div class="card-esporte">
+                <h2>⚽ Futebol</h2>
+
+                <p>O esporte mais famoso do Brasil, desenvolve trabalho em equipe e o condicionamento</p>
+
+                <ul>
+                    <li>Resistência Física</li>
+                    <li>Socialização</li>
+                    <li>Trabalho em equipe</li>
+                </ul>
+
+                <span>Um esporte que ensina mutio sobre a parceria</span>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+        let fita = document.getElementById('fita-imagens')
+        let index = 0
+        let totalSlide = 4
+
+        function iniciarCarrossel() {
+            index++
+
+            if (index >= totalSlide) {
+                index = 0
+            }
+
+            let deslocamento = index * 25 /* 25% da fita */
+            fita.style.transform = `translateX(-${deslocamento}%)`
         }
 
-        let deslocamento = index * 25 /* 25% da fita */ 
-        fita.style.transform = `translateX(-${deslocamento}%)`
-    }
-
-    setInterval(iniciarCarrossel,  4000)
-</script>
+        setInterval(iniciarCarrossel, 4000)
+    </script>
 
 </html>

@@ -271,6 +271,63 @@ html {
     margin-top: 30px;
 }
 
+/* Esportes */
+
+#esportes{
+    background-color: #0f1925;
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 50px;
+    color: white;
+}
+
+.cards-esportes-container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+#esportes h1{
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
+.card-esporte{
+    width: 320px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.card-esporte h2{
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.card-esporte p {
+    color: #F3F4F6;
+    margin-bottom: 20px;
+}
+
+.card-esporte ul {
+    margin-bottom: 20px;
+}
+
+.card-esporte li{
+    margin-bottom: 8px;
+
+}
+
+.card-esporte span{
+    color: #3B82F6;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+
 
 /* button */
 .button {
