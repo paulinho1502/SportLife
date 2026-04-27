@@ -138,6 +138,60 @@ html {
     z-index: 20;
 }
 
+/* Sobre nos */
+
+#sobre{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sobre-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px 60px;
+    min-height: 100vh;
+    background-color: #0f1925;
+
+}
+
+.texto-sobre {
+    text-align: left;
+    max-width: 750px;
+    color: white;
+    margin-right: auto;
+}
+
+.texto-sobre h1{
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.texto-sobre p{
+    font-size: 30px;
+    line-height: 1.4;
+    color: #F3F4F6;
+    margin-bottom: 34px;
+}
+
+.texto-sobre span{
+   color: transparent;
+    font-family: sans-serif;
+    font-weight: bold;
+    background: linear-gradient(to right, #F3F4F6, #3B82F6);
+    background-clip: text;
+    text-decoration: none;
+}
+
+.texto-sobre .button{
+    padding: 18px 50px;
+    font-size: 700;
+}
+
+
 /* Beneficios */
 
 .beneficios-container {
@@ -172,6 +226,45 @@ html {
     color:#4B5563;
     line-height: 1.6;
     max-width: 700px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    text-align: left;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    font-family: sans-serif;
+    color: #0f1925;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #4B5563;
+    line-height: 1.5;
 }
 
 
