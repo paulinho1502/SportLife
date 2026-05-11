@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <a class="logo">SportLife</a>
+            <ul class="navbar">
+                <li><a href="index.html">Ínicio</a></li>
+                <li><a href="">Dashboard</a></li>
+            
+            </ul>
+            <div class="profile">
+                <a href="">Sair</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="quiz">
+
+    <div class="quiz-container">
+
+        <h1>Descubra seu esporte ideal</h1>
+
+        <h2 id="pergunta"></h2>
+
+        <div id="opcoes"></div>
+
+    </div>
+    </section>
+
+</body>
+
+</html>
+
+<script>
+
+    let perguntaAtual = 0
+
+    let pontos = {
+        futebol: 0,
+        basquete: 0,
+        corrida: 0,
+        natacao: 0
+    }
+
+    let perguntas = [
+
+        {
+            pergunta: "Você prefere praticar sozinho ou em equipe?",
+
+            opcoes: [
+                {
+                    texto: "Equipe",
+                    esportes: ["futebol", "basquete"]
+                },
+
+                {
+                    texto: "Sozinho",
+                    esportes: ["corrida", "natacao"]
+                }
+            ]
+        },
+
+        {
+            pergunta: "Qual ambiente você prefere?",
+
+            opcoes: [
+                {
+                    texto: "Campo",
+                    esportes: ["futebol"]
+                },
+
+                {
+                    texto: "Quadra",
+                    esportes: ["basquete"]
+                },
+
+                {
+                    texto: "Piscina",
+                    esportes: ["natacao"]
+                },
+
+                {
+                    texto: "Rua ou parque",
+                    esportes: ["corrida"]
+                }
+            ]
+        },
+
+        {
+            pergunta: "Qual intensidade você gosta?",
+
+            opcoes: [
+                {
+                    texto: "Alta intensidade",
+                    esportes: ["futebol", "basquete"]
+                },
+
+                {
+                    texto: "Resistência",
+                    esportes: ["corrida"]
+                },
+
+                {
+                    texto: "Baixo impacto",
+                    esportes: ["natacao"]
+                }
+            ]
+        },
+
+        {
+            pergunta: "Seu principal objetivo?",
+
+            opcoes: [
+                {
+                    texto: "Diversão",
+                    esportes: ["futebol", "basquete"]
+                },
+
+                {
+                    texto: "Condicionamento",
+                    esportes: ["corrida", "natacao"]
+                },
+
+                {
+                    texto: "Competitividade",
+                    esportes: ["futebol", "basquete"]
+                }
+            ]
+        }
+
+    ]
+
+    function mostrarPergunta() {
+
+        let pergunta = perguntas[perguntaAtual]
+
+        document.getElementById("pergunta").innerHTML =
+            pergunta.pergunta
+
+        let html = ""
+
+        for (let i = 0; i < pergunta.opcoes.length; i++) {
+
+            html += `
+        
+        <button onclick="responder(${i})">
+            ${pergunta.opcoes[i].texto}
+        </button>
+        
+        `
+        }
+
+        document.getElementById("opcoes").innerHTML = html
+    }
+
+    function responder(indice) {
+
+        let opcao = perguntas[perguntaAtual].opcoes[indice]
+
+        for (let i = 0; i < opcao.esportes.length; i++) {
+
+            let esporte = opcao.esportes[i]
+
+            pontos[esporte]++
+        }
+
+        perguntaAtual++
+
+        if (perguntaAtual < perguntas.length) {
+
+            mostrarPergunta()
+
+        } else {
+
+            mostrarResultado()
+        }
+    }
+
+    function mostrarResultado() {
+
+        let total = pontos.futebol + pontos.basquete + pontos.corrida + pontos.natacao
+
+        let porcentagemFutebol = ((pontos.futebol / total) * 100).toFixed(1)
+        let porcentagemBasquete = ((pontos.basquete / total) * 100).toFixed(1)
+        let porcentagemCorrida = ((pontos.corrida / total) * 100).toFixed(1)
+        let porcentagemNatacao = ((pontos.natacao / total) * 100).toFixed(1)
+
+        document.querySelector(".quiz-container").innerHTML =  `
+    <h1>Resultado Final</h1>
+
+    <h3>Futebol</h3>
+    <div class="barra">
+        <div class="progresso"
+        style="width:${porcentagemFutebol}%">
+
+            ${porcentagemFutebol}%
+
+        </div>
+    </div>
+
+    <h3>Basquete</h3>
+    <div class="barra">
+        <div class="progresso"
+        style="width:${porcentagemBasquete}%">
+
+            ${porcentagemBasquete}%
+
+        </div>
+    </div>
+
+    <h3>Corrida</h3>
+    <div class="barra">
+        <div class="progresso"
+        style="width:${porcentagemCorrida}%">
+
+            ${porcentagemCorrida}%
+
+        </div>
+    </div>
+
+    <h3>Natação</h3>
+    <div class="barra">
+        <div class="progresso"
+        style="width:${porcentagemNatacao}%">
+
+            ${porcentagemNatacao}%
+
+        </div>
+    </div>
+
+    `
+
+
+    }
+
+    mostrarPergunta()
+
+</script>
