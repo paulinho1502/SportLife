@@ -548,3 +548,172 @@ html {
     border-radius: 10px;
     font-weight: bold;
 }
+
+
+/* informativo */
+
+#informativo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 90vh;
+    background: #0f1925;
+    padding: 80px;
+}
+
+
+.banner-informativo{
+    width: 100%;
+}
+
+.texto-informativo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.texto-informativo h1{
+    font-size: 70px;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+
+.texto-informativo span{
+    color: #60A5FA
+}
+
+.texto-informativo p {
+    font-size: 28px;
+    line-height: 1.4;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.mini-texto {
+    color: #60A5FA;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-radius: 70px;
+    padding: 10px 20px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(96,165,250,0.25);
+    width: 250px;
+}
+
+.texto-informativo button {
+    padding: 12px 50px;
+    font-size: 700;
+}
+
+#referencias {
+    width: 100%;
+    min-height: 100ch;
+    background-color: #0f1925;
+    padding: 120px 80px;
+}
+
+.referencias-container{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.card-referencias{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+.futebol .card-referencias {
+     border: 1px solid rgba(4, 249, 4, 0.818);
+}
+
+.futebol .card-referencias h1 {
+    color: rgba(4, 249, 4, 0.818);
+}
+
+.basquete .card-referencias {
+    border: 1px solid rgb(255, 119, 0);
+}
+
+.basquete .card-referencias h1 {
+    color: rgba(255, 119, 0);
+}
+
+.natacao .card-referencias {
+    border: 1px solid #60A5FA;
+}
+
+.natacao .card-referencias h1 {
+    color: 1px solid #60A5FA;
+}
+
+.corrida .card-referencias {
+    border: 1px solid rgba(255, 0, 0, 0.881);
+}
+
+.corrida .card-referencias h1 {
+    color: rgba(255, 0, 0, 0.881);
+}
+
+.img-jogador{
+    width: 400px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.img-jogador img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.texto-referencias{
+    max-width: 700px;
+    color: white;
+}
+
+.texto-referencias h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #60A5FA;
+}
+
+.texto-referencias span {
+    color: #9CA3AF;
+    font-size: 18px;
+}
+
+.texto-referencias h3 {
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.texto-referencias p {
+    font-size: 22px;
+    line-height: 1.5;
+    color: #F3F4F6;
+}
+
+
+.referencias-container button{
+    padding: 12px 40px;
+    font-size: 700; 
+    width: fit-content;
+    align-self: center;
+}
+
