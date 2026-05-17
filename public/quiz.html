@@ -176,24 +176,55 @@
 
         perguntaAtual++
 
-        if (perguntaAtual < perguntas.length) {
-
-            mostrarPergunta()
-
-        } else {
+        if (perguntaAtual >= perguntas.length) {
 
             mostrarResultado()
-        }
+
+            return
+
+        } 
+        mostrarPergunta()
     }
 
     function mostrarResultado() {
 
         let total = pontos.futebol + pontos.basquete + pontos.corrida + pontos.natacao
 
-        let porcentagemFutebol = ((pontos.futebol / total) * 100).toFixed(1)
-        let porcentagemBasquete = ((pontos.basquete / total) * 100).toFixed(1)
-        let porcentagemCorrida = ((pontos.corrida / total) * 100).toFixed(1)
-        let porcentagemNatacao = ((pontos.natacao / total) * 100).toFixed(1)
+        let porcentagemFutebol = ((pontos.futebol / total) * 100).toFixed(2)
+        let porcentagemBasquete = ((pontos.basquete / total) * 100).toFixed(2)
+        let porcentagemCorrida = ((pontos.corrida / total) * 100).toFixed(2)
+        let porcentagemNatacao = ((pontos.natacao / total) * 100).toFixed(2)
+
+         fetch("/quiz/salvar", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        futebolServer: porcentagemFutebol,
+        basqueteServer: porcentagemBasquete,
+        corridaServer: porcentagemCorrida,
+        natacaoServer: porcentagemNatacao
+      })
+
+    })
+
+    .then(
+        function (resposta) {
+            if (resposta.ok) {
+                console.log('Resposta salva')
+            }
+        }
+    )
+
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      }
+    )
+
+    
 
         document.querySelector(".quiz-container").innerHTML =  `
     <h1>Resultado Final</h1>
@@ -239,9 +270,12 @@
     </div>
 
     `
+
     
     }
 
     mostrarPergunta()
+
+   
 
 </script>

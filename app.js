@@ -13,10 +13,13 @@ var path = require("path");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
 
+
 var app = express();
+
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var quizRouter = require("./src/routes/quiz")
 
 
 app.use(express.json());
@@ -27,6 +30,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/quiz", quizRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`
