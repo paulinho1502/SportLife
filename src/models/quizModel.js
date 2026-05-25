@@ -1,11 +1,11 @@
 var database = require("../database/config")
 
-function inserir(futebolPontuacao, basquetePontuacao, corridaPontuacao, natacaoPontuacao) {
+function inserir(idUsuario, futebolPontuacao, basquetePontuacao, corridaPontuacao, natacaoPontuacao) {
     console.log("estou aqui")
     console.log("Executando instrução mySQL")
 
     var sql = `INSERT INTO resultado_quiz (fkUsuario, futebol, basquete, corrida, natacao) VALUES 
-    ('1', '${futebolPontuacao}', '${basquetePontuacao}', '${corridaPontuacao}', '${natacaoPontuacao}'); `
+    ('${idUsuario}', '${futebolPontuacao}', '${basquetePontuacao}', '${corridaPontuacao}', '${natacaoPontuacao}'); `
 
      console.log("Executando a instrução SQL: \n" + sql);
 

@@ -59,7 +59,31 @@ function cadastrar(req, res) {
     }
 }
 
+function favoritar(req, res) {
+
+    var idUsuario = req.body.idUsuarioServer
+    var atletaFavorito = req.body.nomeAtletaServer
+
+
+    if (atletaFavorito == undefined) {
+        res.status(400).send("Nome inválido");
+    } else {
+
+        usuarioModel.favoritar(idUsuario, atletaFavorito)
+            .then(function () {
+                res.status(200).send("Atleta favoritado com sucesso");
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }   
+}
+
+
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    favoritar
 }

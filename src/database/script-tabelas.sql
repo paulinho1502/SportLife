@@ -13,7 +13,8 @@ CREATE TABLE usuario (
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45),
 email VARCHAR (45),
-senha VARCHAR(45));
+senha VARCHAR(45),
+atleta_favorito VARCHAR (45));
 
 CREATE TABLE resultado_quiz (
 idResulado INT PRIMARY KEY AUTO_INCREMENT,

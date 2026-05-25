@@ -68,13 +68,16 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
+
+                    sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                   
 
-                    setTimeout(function () {
+                     setTimeout(function () {
                         window.location = "informativo.html";
                     }, 1000); // apenas para exibir o loading
+                    
 
                 });
 

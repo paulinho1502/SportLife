@@ -579,6 +579,7 @@ html {
 }
 
 .texto-informativo h1{
+    font-family: clamp(32px, 5vw, 54px);
     font-size: 70px;
     line-height: 1;
     margin-bottom: 30px;
@@ -636,6 +637,12 @@ html {
     transition: 0.3s;
 }
 
+.card-referencias:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 30px rgba(96,165,250,0.15);
+}
+
 .futebol .card-referencias {
      border: 1px solid rgba(4, 249, 4, 0.818);
 }
@@ -657,7 +664,7 @@ html {
 }
 
 .natacao .card-referencias h1 {
-    color: 1px solid #60A5FA;
+    color:#60A5FA;
 }
 
 .corrida .card-referencias {
@@ -672,13 +679,19 @@ html {
     width: 400px;
     height: 300px;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .img-jogador img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50px;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.card-referencias:hover img {
+    transform: scale(1.08);
 }
 
 .texto-referencias{
@@ -715,5 +728,143 @@ html {
     font-size: 700; 
     width: fit-content;
     align-self: center;
+}
+
+
+/* modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    padding: 30px;
+    align-items: center;
+    z-index: 99999;
+}
+
+.modal-container {
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    overflow-y: auto;
+    background: #0f1925;
+    border-radius: 24px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.img-modal {
+    width: 100%;
+    overflow: hidden;
+}
+
+.img-modal img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 24px;
+
+}
+
+.modal-info {
+    padding: 40px;
+    color: white;
+}
+
+.tag-esporte {
+    display: inline-block;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tag-esporte.futebol {
+    background: #22c55e;
+}
+.tag-esporte.basquete {
+    background: rgba(255, 119, 0);
+}
+
+.tag-esporte.natacao {
+    background: #3B82F6;
+}
+
+.tag-esporte.corrida {
+    background: rgba(255, 0, 0, 0.881);
+}
+
+.modal-info h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.button-favoritar {
+    border: none;
+    background:  rgba(255,255,255,0.12);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 25px;
+}
+
+.button-favoritar:hover {
+    transform: scale(1.05);
+    background: #0f1925;
+}
+
+.titulo {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.historia-atleta {
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.historia-atleta h3 {
+    font-size: 43px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.historia-atleta p {
+    font-size: 24px;
+    line-height: 1.5;
+    color: #F3F4F6;
+}
+
+.fechar {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    border-radius: 70px;
+    background:  rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fechar:hover {
+    background: #0f1925;
 }
 
