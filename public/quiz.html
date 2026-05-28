@@ -13,13 +13,13 @@
         <div class="container">
             <a class="logo">SportLife</a>
             <ul class="navbar">
-                <li><a href="index.html">Ínicio</a></li>
+                <li><a href="inicio.html">Ínicio</a></li>
                 <li><a href="informativo.html">Referencias</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="">Dashboard</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
             </ul>
             <div class="profile">
-                <a href="">Sair</a>
+                <a href="index.html">Sair</a>
             </div>
         </div>
     </div>
@@ -147,11 +147,11 @@
         document.getElementById("pergunta").innerHTML =
             pergunta.pergunta
 
-        let html = ""
+        let mensagem = ""
 
         for (let i = 0; i < pergunta.opcoes.length; i++) {
 
-            html += `
+            mensagem += `
         
         <button onclick="responder(${i})">
             ${pergunta.opcoes[i].texto}
@@ -160,7 +160,7 @@
         `
         }
 
-        document.getElementById("opcoes").innerHTML = html
+        document.getElementById("opcoes").innerHTML = mensagem
     }
 
     function responder(indice) {
@@ -216,6 +216,8 @@
         function (resposta) {
             if (resposta.ok) {
                 console.log('Resposta salva')
+
+                window.location = "dashboard.html"
             }
         }
     )
@@ -225,52 +227,6 @@
       }
     )
 
-    
-
-        document.querySelector(".quiz-container").innerHTML =  `
-    <h1>Resultado Final</h1>
-
-    <h3>Futebol</h3>
-    <div class="barra">
-        <div class="progresso"
-        style="width:${porcentagemFutebol}%">
-
-            ${porcentagemFutebol}%
-
-        </div>
-    </div>
-
-    <h3>Basquete</h3>
-    <div class="barra">
-        <div class="progresso"
-        style="width:${porcentagemBasquete}%">
-
-            ${porcentagemBasquete}%
-
-        </div>
-    </div>
-
-    <h3>Corrida</h3>
-    <div class="barra">
-        <div class="progresso"
-        style="width:${porcentagemCorrida}%">
-
-            ${porcentagemCorrida}%
-
-        </div>
-    </div>
-
-    <h3>Natação</h3>
-    <div class="barra">
-        <div class="progresso"
-        style="width:${porcentagemNatacao}%">
-
-            ${porcentagemNatacao}%
-
-        </div>
-    </div>
-
-    `
 
     
     }

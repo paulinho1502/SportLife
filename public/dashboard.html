@@ -1,45 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    
 
-    <section id="dashboard">
+<body onload="buscarDashboard()">
 
-        <div class="texto-dashboard">
-        <h1>Seu perfil esportivo</h1>
-        <p>Com base nas repostas, aqui está os esportes 
-            que podem combinar com você
-        </p>
+    <section class="dashboard">
+
+        <div id="header">
+            <div class="container">
+                <a class="logo">SportLife</a>
+                <ul class="navbar">
+                    <li><a href="inicio.html">Ínicio</a></li>
+                    <li><a href="informativo.html">Referencias</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+                <div class="profile">
+                    <a href="index.html">Sair</a>
+                </div>
+            </div>
         </div>
 
-        <div class="kpi-dashboard-container">
+        <div class="titulo-dashboard">
+            <h1>Seu perfil esportivo</h1>
 
-            <div class="kpi-dashboard">
-                <p>Esporte principal</p>
-                <h3>Basquete</h3>
+            <p>Com base nas suas respostas, veja seus resultados</p>
+        </div>
+
+        <div class="kpi-container">
+
+            <div class="kpi-card">
+                <h3>Esporte indicado</h3>
+                <span id="esporte_indicado"></span>
             </div>
 
-             <div class="kpi-dashboard">
-                <p>Esporte Segundario</p>
-                <h3>Corrida</h3>
+            <div class="kpi-card">
+                <h3>Atleta favorito</h3>
+                <span id="atleta_favorito"></span>
             </div>
 
-            <div class="kpi-dashboard">
-                <p>Esporte mais recomendado</p>
-                <h3>Futebol</h3>
-                <p>Resultado mais comum entre usuarios</p>
+            <div class="kpi-card">
+                <h3>Esporte mais indicado entre os usuários</h3>
+                <span id="esporte_mais_indicado"></span>
             </div>
 
-            
+            <div class="kpi-card">
+                <h3>Usuários que decidiram conhecer seu proximo passo</h3>
+                <span id="usuarios_total"></span>
+            </div>
 
         </div>
+
+
+        <div class="graficos-container">
+
+            <div class="grafico-card">
+                <h2>Resultado Quiz</h2>
+                <canvas id="graficoPizza"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Atleta preferido dos usuários</h2>
+                <canvas id="graficoBarra"></canvas>
+            </div>
+
+        </div>
+
     </section>
 
 </body>
+
 </html>
+<script>
+
+
+
+
+
+
+    function buscarDashboard() {
+
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/usuarios/dashboard/${idUsuario}`)
+            .then(function (resposta) {
+
+
+
+                if (resposta.ok) {
+
+                    resposta.json().then(function (dados) {
+
+                        console.log(dados);
+                        console.log(dados[0]);
+
+                        let usuario = dados[0];
+
+                        console.log(usuario);
+
+                        console.log(usuario.neymar);
+                        console.log(usuario.kobe);
+                        console.log(usuario.phelps);
+                        console.log(usuario.bolt);
+
+                        atleta_favorito.innerHTML = usuario.atleta_favorito;
+                        usuarios_total.innerHTML = usuario.totalUsuarios;
+                        esporte_mais_indicado.innerHTML = usuario.esporteMaisIndicado;
+
+                        let esporteIndicado = "";
+
+                        if (usuario.futebol >= usuario.basquete &&
+                            usuario.futebol >= usuario.natacao &&
+                            usuario.futebol >= usuario.corrida) {
+                            esporteIndicado = "Futebol"
+                        } else if (usuario.basquete >= usuario.futebol &&
+                            usuario.basquete >= usuario.natacao &&
+                            usuario.basquete >= usuario.corrida) {
+                            esporteIndicado = "Basquete"
+                        } else if (usuario.natacao >= usuario.futebol &&
+                            usuario.natacao >= usuario.basquete &&
+                            usuario.natacao >= usuario.corrida) {
+                            esporteIndicado = "Natação"
+                        } else {
+                            esporteIndicado = "Corrida"
+                        }
+
+                        esporte_indicado.innerHTML = esporteIndicado
+
+                        new Chart(document.getElementById("graficoPizza"), {
+                            type: "pie",
+
+                            data: {
+                                labels: [
+                                    "Futebol",
+                                    "Basquete",
+                                    "Natação",
+                                    "Corrida"
+                                ],
+
+                                datasets: [{
+                                    data: [usuario.futebol, usuario.basquete, usuario.natacao, usuario.corrida],
+
+                                    backgroundColor: [
+                                        "#22c55e",
+                                        "rgba(255, 119, 0)",
+                                        "#3B82F6",
+                                        "rgba(255, 0, 0, 0.881)"
+                                    ],
+
+                                    borderColor: "#0f1925",
+                                    borderWidth: 4
+                                }]
+                            }
+                        });
+
+                        new Chart(document.getElementById("graficoBarra"), {
+                            type: "bar",
+
+                            data: {
+                                labels: [
+                                    "Neymar jr",
+                                    "Kobe Bryan",
+                                    "Michael Phelps",
+                                    "Usain Bolt"
+                                ],
+
+                                datasets: [{
+                                    data: [
+                                        Number(usuario.neymar),
+                                        Number(usuario.kobe),
+                                        Number(usuario.phelps),
+                                        Number(usuario.bolt)
+                                    ],
+
+                                    backgroundColor: [
+                                        "#22C55E",
+                                        "rgba(255, 119, 0)",
+                                        "#3B82F6",
+                                        "rgba(255, 0, 0, 0.881)"
+                                    ],
+
+                                    borderRadius: 12,
+                                    barThickness: 80
+                                }]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+
+
+                    })
+
+
+                } else {
+                    console.log("Erro ao buscar dashboard")
+                }
+            })
+
+            .catch(function (erro) {
+                console.log(erro)
+            })
+    }
+
+
+
+
+</script>

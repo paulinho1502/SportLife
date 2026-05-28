@@ -30,6 +30,19 @@ html {
     
 }
 
+footer {
+    display: flex;
+    color: white;
+    width: 100%;
+    height: 20px;
+    padding: 30px;
+    justify-content: space-around;  
+    align-items: center;
+    background-color: #0f1925;
+    border-top: 3px solid #1E40AF;
+    z-index: 1000;
+}
+
 
 .logo {
     color: transparent;
@@ -81,7 +94,7 @@ html {
    display: flex;
    width: 400%;
    height: 100%;
-   transition: transform 1.2s ease-in-out; /*Responsavel por fazer o movimento do carrossel em 1.2 segundos */
+   transition: transform 1.2s ease-in-out; 
 }
 
 .slide {
@@ -96,10 +109,22 @@ html {
     color: black;
 }
 
-.img1 { background-image: linear-gradient(rgba(0,0,0,0.7)), url('../assets/img1.jpg');}
-.img2 { background-image: linear-gradient(rgba(0,0,0,0.7)), url('../assets/img2.jpg');}
-.img3 { background-image: linear-gradient(rgba(0,0,0,0.7)), url('../assets/img3.jpg');}
-.img4 { background-image: linear-gradient(rgba(0,0,0,0.7)), url('../assets/img4.jpg');}
+.img1 {
+    background-image: linear-gradient(rgba(0,0,0,0.7)), 
+    url('../assets/img1.jpg');
+}
+.img2 {
+    background-image: linear-gradient(rgba(0,0,0,0.7)), 
+    url('../assets/img2.jpg');
+}
+.img3 { 
+    background-image: linear-gradient(rgba(0,0,0,0.7)), 
+    url('../assets/img3.jpg');
+}
+.img4 {
+    background-image: linear-gradient(rgba(0,0,0,0.7)), 
+    url('../assets/img4.jpg');
+}
 
 
 
@@ -532,22 +557,7 @@ html {
      transform:scale(1.02);
 }
 
-.barra {
-    width: 100%;
-    background: #4B5563;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
 
-}
-
-.progresso {
-    background: #60A5FA;
-    padding: 10px;
-    text-align: center;
-    border-radius: 10px;
-    font-weight: bold;
-}
 
 
 /* informativo */
@@ -868,3 +878,89 @@ html {
     background: #0f1925;
 }
 
+/* dash */
+
+.dashboard {
+    padding: 40px 80px;
+    background: #0f1925;
+    width: 100%;
+    
+}
+
+
+.titulo-dashboard {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.titulo-dashboard h1 {
+    font-size: 58px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1E40AF;
+}
+
+.titulo-dashboard p {
+    font-size: 22px;
+    color: #94A3B8;
+}
+
+.kpi-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.kpi-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 25px;
+    padding: 30px;
+    transition: .3s;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+}
+
+.kpi-card h3 {
+    font-size: 18px;
+    color: #94A3B8;
+    margin-bottom: 15px;
+}
+
+.kpi-card span {
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+}
+
+.graficos-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.grafico-card {
+    background: rgba(255,255,255,0.05);;
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 25px;
+    padding: 30px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grafico-card h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+canvas {
+    width: 80% !important;
+    height: 90% !important;
+}

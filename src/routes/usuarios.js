@@ -16,4 +16,8 @@ router.put("/favoritar", function(req, res) {
     usuarioController.favoritar(req, res);
 })
 
+router.get("/dashboard/:idUsuario", function(req, res) {
+    usuarioController.buscarDashboard(req, res);
+})
+
 module.exports = router;

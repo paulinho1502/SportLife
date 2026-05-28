@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <section id="login">
         <div class="cadastro-container">
@@ -13,12 +15,12 @@
                 <p><a href="index.html">Ínicio</a></p>
                 <h1>Bem vindo</h1>
 
-                 <div class="campo">
+                <div class="campo">
                     <span>E-mail:</span>
                     <input id="inp_email" type="email" placeholder="seuemail@gmail.com">
                 </div>
 
-                 <div class="campo">
+                <div class="campo">
                     <span>Senha:</span>
                     <input id="inp_senha" type="password" placeholder="Sua senha">
                 </div>
@@ -29,72 +31,78 @@
         </div>
     </section>
 </body>
+
 </html>
 <script>
     function entrar() {
         let email = inp_email.value
         let senha = inp_senha.value
 
-        
+
 
         if (email == "" || senha == "") {
-            
-             alert('Todos os campos devem estar preenchidos')
-            
+
+            alert('Todos os campos devem estar preenchidos')
+
             return false;
         }
         else {
-           
-        
 
-        console.log("FORM LOGIN: ", email);
-        console.log("FORM SENHA: ", senha);
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: email,
-                senhaServer: senha
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                console.log(resposta);
+            console.log("FORM LOGIN: ", email);
+            console.log("FORM SENHA: ", senha);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                  
+                if (resposta.ok) {
+                    console.log(resposta);
 
-                     setTimeout(function () {
-                        window.location = "informativo.html";
-                    }, 1000); // apenas para exibir o loading
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.ID_USUARIO = json.id;
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+
+
+                        setTimeout(function () {
+                            window.location = "informativo.html";
+                        }, 1000); // apenas para exibir o loading
+
+
+                    });
+
+                } else {
+
+                    alert("E-mail ou senha incorretos!")
+
+                    inp_senha.value = ""
+                    inp_email.value = ""
+                    
                     
 
-                });
+                    resposta.text().then(texto => {
+                        console.error(texto);
 
-            } else {
+                    });
+                }
 
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-    }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
         return false;
 
 

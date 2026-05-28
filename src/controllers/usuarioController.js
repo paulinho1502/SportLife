@@ -77,7 +77,22 @@ function favoritar(req, res) {
                 console.log(erro);
                 res.status(500).json(erro.sqlMessage);
             });
-    }   
+    }
+}
+
+function buscarDashboard(req, res) {
+
+    var idUsuario = req.params.idUsuario
+
+    usuarioModel.buscarDashboard(idUsuario)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+
 }
 
 
@@ -85,5 +100,6 @@ function favoritar(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    favoritar
+    favoritar,
+    buscarDashboard
 }
