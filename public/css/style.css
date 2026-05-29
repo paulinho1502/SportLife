@@ -106,7 +106,7 @@ footer {
 
 .banner-container button{
     background-color: #1E40AF;
-    color: black;
+    color: white;
 }
 
 .img1 {
@@ -158,6 +158,7 @@ footer {
 .banner-button {
     margin-top: 100px;
     z-index: 20;
+    color: white;
 }
 
 /* Objetivo */
@@ -421,12 +422,9 @@ footer {
     cursor: pointer;
     text-decoration: none;
     font-size: 16px;
-}
-
-.button a {
-    color: white;
     text-decoration: none;
 }
+
 
 .button:hover {
     transform: scale(1.07);
